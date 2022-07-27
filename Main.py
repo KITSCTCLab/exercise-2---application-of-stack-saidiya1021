@@ -6,10 +6,7 @@ class Evaluate:
       stack: A List which acts as a Stack.
   """
   def __init__(self, size):
-    """Inits Evaluate with top, size_of_stack and stack.
-    Arguments:
-      size_of_stack: An integer to set the size of stack.
-    """
+    
     self.top = -1
     self.size_of_stack = size
     self.stack = []
@@ -17,14 +14,14 @@ class Evaluate:
     
 
 
-  def __init__(self, size):
+ """ def __init__(self, size):
     """Inits Evaluate with top, size_of_stack and stack.
     Arguments:
       size_of_stack: An integer to set the size of stack.
     """
     self.top = -1
     self.size_of_stack = size
-    self.stack = []
+    self.stack = []"""
 
 
   def isEmpty(self):
