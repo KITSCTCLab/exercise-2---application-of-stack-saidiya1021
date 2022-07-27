@@ -56,7 +56,7 @@ class Evaluate:
       True if the expression is valid, else returns False.
     """
     for ch in expression:
-      if ch not in '1234567890' or ch not in '+-*/^' or ch is '':
+      if ch not in '1234567890' or ch not in '+-*/^' or ch in '':
         return False
       return True
     
