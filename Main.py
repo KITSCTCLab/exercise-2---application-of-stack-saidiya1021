@@ -84,7 +84,7 @@ class Evaluate:
     for ch in self.expression:
       if ch in '1234567890':
         evaluate.push(ch)
-      else:
+      else: 
         self.num1=int(evaluate.pop)
         self.num2=int(evaluate.pop)
         self.value=evaluate.evaluation(num1,num2,ch)
