@@ -61,7 +61,7 @@ class Evaluate:
       if ch not in '1234567890' or ch not in '+-*/^' or ch in '':
         return False
       else:
-      return True
+        return True
     
     def evaluation(self,num1,num2,opr):
       if self.opr=='+':
