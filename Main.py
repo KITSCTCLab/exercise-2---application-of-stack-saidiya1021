@@ -36,7 +36,7 @@ class Evaluate:
       The data which is popped out if the stack is not empty.
     """
     if not self.isEmpty():
-      return self.stack.pop()
+      self.stack.pop()
 
 
   def push(self, operand):
@@ -57,23 +57,18 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    for ch in expression:
-      if ch not in '1234567890' or ch not in '+-*/^' or ch in '':
-        return False
+    num=0
+    operand=0
+    for element in expression:
+      if element.isnumeric():
+        num=num+1
       else:
+        operand=operand+1
+      if operand==num-1:
         return True
-    
-    def evaluation(self,num1,num2,opr):
-      if self.opr=='+':
-        return num2 + num1
-      elif self.opr=='-':
-        return num2 - num1
-      elif self.opr=='*':
-        return num1*num2
-      elif self.opr=='/':
-        return num2/num1
-      elif self.opr=='^':
-        return num2**num1
+      else:
+        return False
+          
 
 
   def evaluate_postfix_expression(self, expression):
@@ -85,14 +80,26 @@ class Evaluate:
       The result of evaluated postfix expression.
     """
     for ch in self.expression:
-      if ch in '1234567890':
-        evaluate.push(ch)
-      else: 
-        self.num1=int(evaluate.pop)
-        self.num2=int(evaluate.pop)
-        self.value=evaluate.evaluation(num1,num2,ch)
-    print(self.stack[0])
-          
+      if ch.isnumeric():
+        stack.append(int(ch))
+      if len(stack)>=2:
+        if ch=='+':
+          stack[-2]=stack[-2]+stack[-1]
+          stack.pop()
+        elif ch=='-':
+          stack[-2]=stack[-2]-stack[-1]
+          stack.pop()
+        elif ch=='*':
+          stack[-2]=stack[-2]*stack[-1]
+          stack.pop()
+        elif ch=='/':
+          stack[-2]=stack[-2]/stack[-1]
+          stack.pop()
+        elif ch=='^':
+          stack[-2]=stack[-2]**stack[-1]
+          stack.pop()
+      return int(stack[-1])
+     
 
 
 # Do not change the following code
