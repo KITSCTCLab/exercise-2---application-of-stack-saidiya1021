@@ -79,7 +79,7 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-    for ch in self.expression:
+    for ch in expression:
       if ch.isnumeric():
         stack.append(int(ch))
       if len(stack)>=2:
@@ -98,7 +98,7 @@ class Evaluate:
         elif ch=='^':
           stack[-2]=stack[-2]**stack[-1]
           stack.pop()
-      return int(stack[-1]) 
+     return int(stack[-1]) 
      
 
 
