@@ -81,24 +81,24 @@ class Evaluate:
     """
     for ch in expression:
       if ch.isnumeric():
-        stack.append(int(ch))
-      if len(stack)>=2:
+        self.stack.append(int(ch))
+      if len(self.stack)>=2:
         if ch=='+':
-          stack[-2]=stack[-2]+stack[-1]
-          stack.pop()
+          self.stack[-2]=self.stack[-2]+self.stack[-1]
+          self.stack.pop()
         elif ch=='-':
-          stack[-2]=stack[-2]-stack[-1]
-          stack.pop()
+          self.stack[-2]=self.stack[-2]-self.stack[-1]
+          self.stack.pop()
         elif ch=='*':
-          stack[-2]=stack[-2]*stack[-1]
-          stack.pop()
+          self.stack[-2]=self.stack[-2]*self.stack[-1]
+          self.stack.pop()
         elif ch=='/':
-          stack[-2]=stack[-2]/stack[-1]
-          stack.pop()
+          self.stack[-2]=self.stack[-2]/self.stack[-1]
+          self.stack.pop()
         elif ch=='^':
-          stack[-2]=stack[-2]**stack[-1]
-          stack.pop()
-    return int(stack[-1])
+          self.stack[-2]=self.stack[-2]**self.stack[-1]
+          self.stack.pop()
+    return int(self.stack[-1])
      
 
 
