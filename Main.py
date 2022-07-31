@@ -98,7 +98,7 @@ class Evaluate:
         elif ch=='^':
           self.stack[-2]=self.stack[-2]**self.stack[-1]
           self.stack.pop()
-    return int(self.stack[-1])
+    return int(self.stack[-1]) 
      
 
 
