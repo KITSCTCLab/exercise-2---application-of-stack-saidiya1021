@@ -5,6 +5,8 @@ class Evaluate:
       size_of_stack: An integer which represents the size of stack.
       stack: A List which acts as a Stack.
   """
+  # Write your code here
+  
   
   def __init__(self, size):
     """Inits Evaluate with top, size_of_stack and stack.
@@ -21,7 +23,10 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-    return len(self.stack)==0
+    if self.top==-1:
+      return True
+    else:
+      return False
 
 
   def pop(self):
@@ -30,7 +35,7 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
-    if not isEmpty(self.stack):
+    if not self.isEmpty():
       return self.stack.pop()
 
 
@@ -40,7 +45,7 @@ class Evaluate:
     Arguments:
       operand: The operand to be pushed.
     """
-    if len(self.stack)<=self.size_of_stack:
+    if self.top!=self.size_of_stack-1:
       self.stack.append(operand)
 
 
@@ -55,6 +60,7 @@ class Evaluate:
     for ch in expression:
       if ch not in '1234567890' or ch not in '+-*/^' or ch in '':
         return False
+      else:
       return True
     
     def evaluation(self,num1,num2,opr):
