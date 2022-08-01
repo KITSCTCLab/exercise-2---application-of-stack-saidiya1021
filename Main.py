@@ -5,18 +5,17 @@ class Evaluate:
       size_of_stack: An integer which represents the size of stack.
       stack: A List which acts as a Stack.
   """
-    # Write your code here
-
-
+  # Write your code here
+  
+  
   def __init__(self, size):
     """Inits Evaluate with top, size_of_stack and stack.
     Arguments:
-      size_of_stack: An integer to set the size of stack.
-    """
+      size_of_stack: An integer to set the size of stack."""
+    
     self.top = -1
     self.size_of_stack = size
     self.stack = []
-
 
   def isEmpty(self):
     """
@@ -24,7 +23,10 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-      # Write your code here
+    if self.top==-1:
+      return True
+    else:
+      return False
 
 
   def pop(self):
@@ -33,7 +35,8 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
-    # Write your code here
+    if not self.isEmpty():
+      self.stack.pop()
 
 
   def push(self, operand):
@@ -42,7 +45,8 @@ class Evaluate:
     Arguments:
       operand: The operand to be pushed.
     """
-    # Write your code here
+    if self.top!=self.size_of_stack-1:
+      self.stack.append(operand)
 
 
   def validate_postfix_expression(self, expression):
@@ -53,7 +57,18 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    # Write your code here
+    num=0
+    operand=0
+    for element in expression:
+      if element.isnumeric():
+        num=num+1
+      else:
+        operand=operand+1
+      if operand==num-1:
+        return True
+      else:
+        return False
+          
 
 
   def evaluate_postfix_expression(self, expression):
@@ -64,7 +79,27 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-    # Write your code here
+    for ch in expression:
+      if ch.isnumeric():
+        self.stack.append(int(ch))
+      if len(self.stack)>=2:
+        if ch=='+':
+          self.stack[-2]=self.stack[-2]+self.stack[-1]
+          self.stack.pop()
+        elif ch=='-':
+          self.stack[-2]=self.stack[-2]-self.stack[-1]
+          self.stack.pop()
+        elif ch=='*':
+          self.stack[-2]=self.stack[-2]*self.stack[-1]
+          self.stack.pop()
+        elif ch=='/':
+          self.stack[-2]=self.stack[-2]/self.stack[-1]
+          self.stack.pop()
+        elif ch=='^':
+          self.stack[-2]=self.stack[-2]**self.stack[-1]
+          self.stack.pop()
+    return int(self.stack[-1]) 
+     
 
 
 # Do not change the following code
@@ -74,4 +109,4 @@ evaluate = Evaluate(len(tokens))
 if evaluate.validate_postfix_expression(tokens):
     print(evaluate.evaluate_postfix_expression(tokens))
 else:
-    print('Invalid postfix expression')
+    print('Invalid postfix expression') 
